@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Curricular Interactiva</title>
+  <style>
+    body { font-family: Arial; padding: 2em; background: #f5f5f5; }
+    .curso { border: 1px solid #ccc; padding: 10px; margin: 10px; background: #fff; cursor: pointer; transition: 0.3s; }
+    .curso:hover { background: #e0f7fa; }
+    .detalle { display: none; padding: 5px; color: #333; }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular</h1>
+  <div class="curso" onclick="toggleDetalle(this)">
+    <strong>Matemática I</strong>
+    <div class="detalle">Créditos: 4<br>Requisito: Ninguno</div>
+  </div>
+  <div class="curso" onclick="toggleDetalle(this)">
+    <strong>Física Básica</strong>
+    <div class="detalle">Créditos: 3<br>Requisito: Matemática I</div>
+  </div>
+  <script>
+    function toggleDetalle(el) {
+      const detalle = el.querySelector(".detalle");
+      detalle.style.display = (detalle.style.display === "block") ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
