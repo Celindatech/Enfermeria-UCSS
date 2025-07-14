@@ -140,7 +140,7 @@ function renderizarCursos() {
   const egreso = document.getElementById('egreso');
   const yaEgresaste = egreso.classList.contains('animado');
 
-  if (creditos >= 260 && electivos >= 2) {
+  if (creditos >= 221 && electivos >= 2) {
     egreso.textContent = '🎓 ¡Puedes egresar!';
     if (!yaEgresaste) {
       egreso.classList.add('animado');
