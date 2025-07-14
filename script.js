@@ -114,18 +114,11 @@ function crearCajaCurso(curso) {
   return div;
 }
 
-function renderizarCursos() {function lanzarConfeti() {
-  confetti({
-    particleCount: 150,
-    spread: 100,
-    origin: { y: 0.6 }
-  });
-}
-
+function renderizarCursos() {
   const contenedor = document.getElementById('malla');
   contenedor.innerHTML = '';
   const ciclos = [...new Set(cursos.map(c => c.ciclo))].sort((a, b) => a - b);
-
+  
   for (const ciclo of ciclos) {
     const columna = document.createElement('div');
     columna.className = 'ciclo';
@@ -144,21 +137,22 @@ function renderizarCursos() {function lanzarConfeti() {
 
   const creditos = contarCreditosAprobados();
   const electivos = contarElectivosAprobados();
+  const egreso = document.getElementById('egreso');
   const yaEgresaste = egreso.classList.contains('animado');
 
-if (creditos >= 260 && electivos >= 2) {
-  egreso.textContent = '🎓 ¡Puedes egresar!';
-  if (!yaEgresaste) {
-    egreso.classList.add('animado');
-    lanzarConfeti();
+  if (creditos >= 260 && electivos >= 2) {
+    egreso.textContent = '🎓 ¡Puedes egresar!';
+    if (!yaEgresaste) {
+      egreso.classList.add('animado');
+      lanzarConfeti();
+    }
+  } else {
+    egreso.textContent = '';
+    egreso.classList.remove('animado');
   }
-} else {
-  egreso.textContent = '';
-  egreso.classList.remove('animado');
 }
 
-
-// Este bloque va FUERA de la función `renderizarCursos`
+// 🟩 Esto sí va afuera, al final del archivo
 window.addEventListener('DOMContentLoaded', () => {
   cargarEstado();
   renderizarCursos();
