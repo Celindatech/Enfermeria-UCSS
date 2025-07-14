@@ -1,20 +1,114 @@
-const cursos = [
-  // Formato: { codigo, nombre, ciclo, tipo, creditos, requisitos: [], estado: "", creditosTotalesRequisito: opcional }
-  { codigo: "170001", nombre: "Antropología religiosa", ciclo: 1, tipo: "O", creditos: 4, requisitos: [] },
-  { codigo: "360001", nombre: "Introducción a la enfermería", ciclo: 1, tipo: "O", creditos: 3, requisitos: [] },
-  { codigo: "150283", nombre: "Comunicación escrita académica", ciclo: 1, tipo: "O", creditos: 5, requisitos: [] },
-  { codigo: "310003", nombre: "Biología", ciclo: 1, tipo: "O", creditos: 3, requisitos: [] },
-  { codigo: "310004", nombre: "Química y bioquímica", ciclo: 1, tipo: "O", creditos: 3, requisitos: [] },
-  { codigo: "132103", nombre: "Conceptos matemáticos", ciclo: 1, tipo: "O", creditos: 3, requisitos: [] },
-  { codigo: "150286", nombre: "Actividades I", ciclo: 1, tipo: "O", creditos: 1, requisitos: [] },
-  { codigo: "150285", nombre: "Inglés I", ciclo: 1, tipo: "O", creditos: 1, requisitos: [] },
-  { codigo: "170009", nombre: "Teología I", ciclo: 2, tipo: "O", creditos: 4, requisitos: ["170001"] },
-  { codigo: "360017", nombre: "Psicología en la atención de Enfermería", ciclo: 2, tipo: "O", creditos: 2, requisitos: ["360001"] },
-  { codigo: "150284", nombre: "Redacción académica", ciclo: 2, tipo: "O", creditos: 5, requisitos: ["150283"] },
-  { codigo: "360016", nombre: "Microbiología y parasitología", ciclo: 2, tipo: "O", creditos: 3, requisitos: ["310003"] },
-  { codigo: "350001", nombre: "Anatomía", ciclo: 2, tipo: "O", creditos: 4, requisitos: ["310003"] },
-  { codigo: "350097", nombre: "Física aplicada a la salud", ciclo: 2, tipo: "O", creditos: 3, requisitos: ["132103"] },
-  { codigo: "150288", nombre: "Inglés II", ciclo: 2, tipo: "O", creditos: 1, requisitos: [] },
+{
+  "codigo": "170001",
+  "nombre": "Antropología religiosa",
+  "ciclo": 1,
+  "tipo": "O",
+  "creditos": 4
+},
+{
+  "codigo": "360001",
+  "nombre": "Introducción a la enfermería",
+  "ciclo": 1,
+  "tipo": "O",
+  "creditos": 3
+},
+{
+  "codigo": "150283",
+  "nombre": "Comunicación escrita académica",
+  "ciclo": 1,
+  "tipo": "O",
+  "creditos": 5
+},
+{
+  "codigo": "310003",
+  "nombre": "Biología",
+  "ciclo": 1,
+  "tipo": "O",
+  "creditos": 3
+},
+{
+  "codigo": "310004",
+  "nombre": "Química y bioquímica",
+  "ciclo": 1,
+  "tipo": "O",
+  "creditos": 3
+},
+{
+  "codigo": "132103",
+  "nombre": "Conceptos matemáticos",
+  "ciclo": 1,
+  "tipo": "O",
+  "creditos": 3
+},
+{
+  "codigo": "150286",
+  "nombre": "Actividades I",
+  "ciclo": 1,
+  "tipo": "O",
+  "creditos": 1
+},
+{
+  "codigo": "150285",
+  "nombre": "Inglés I",
+  "ciclo": 1,
+  "tipo": "O",
+  "creditos": 1
+},
+{
+  "codigo": "170009",
+  "nombre": "Teología I",
+  "ciclo": 2,
+  "tipo": "O",
+  "creditos": 4,
+  "requisitos": ["170001"]
+},
+{
+  "codigo": "360017",
+  "nombre": "Psicología en la atención de Enfermería",
+  "ciclo": 2,
+  "tipo": "O",
+  "creditos": 2,
+  "requisitos": ["360001"]
+},
+{
+  "codigo": "150284",
+  "nombre": "Redacción académica",
+  "ciclo": 2,
+  "tipo": "O",
+  "creditos": 5,
+  "requisitos": ["150283"]
+},
+{
+  "codigo": "360016",
+  "nombre": "Microbiología y parasitología",
+  "ciclo": 2,
+  "tipo": "O",
+  "creditos": 3,
+  "requisitos": ["310003"]
+},
+{
+  "codigo": "350001",
+  "nombre": "Anatomía",
+  "ciclo": 2,
+  "tipo": "O",
+  "creditos": 4,
+  "requisitos": ["310003"]
+},
+{
+  "codigo": "350097",
+  "nombre": "Física aplicada a la salud",
+  "ciclo": 2,
+  "tipo": "O",
+  "creditos": 3,
+  "requisitos": ["132103"]
+},
+{
+  "codigo": "150288",
+  "nombre": "Inglés II",
+  "ciclo": 2,
+  "tipo": "O",
+  "creditos": 1
+},
 {"codigo": "170010","nombre": "Teología II","ciclo": 3,"tipo": "O","creditos": 4,"requisitos": ["170009"]},
 {"codigo": "360018","nombre": "Proceso de cuidados en Enfermería","ciclo": 3,"tipo": "O","creditos": 3,"requisitos": ["360017"]},
 {"codigo": "350005","nombre": "Estrategias de prevención y promoción de la salud","ciclo": 3,"tipo": "O","creditos": 3,"requisitos": ["360017"]},
