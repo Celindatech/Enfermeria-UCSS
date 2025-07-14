@@ -1,114 +1,18 @@
-const cursos = [{
-  "codigo": "170001",
-  "nombre": "Antropología religiosa",
-  "ciclo": 1,
-  "tipo": "O",
-  "creditos": 4
-},
-{
-  "codigo": "360001",
-  "nombre": "Introducción a la enfermería",
-  "ciclo": 1,
-  "tipo": "O",
-  "creditos": 3
-},
-{
-  "codigo": "150283",
-  "nombre": "Comunicación escrita académica",
-  "ciclo": 1,
-  "tipo": "O",
-  "creditos": 5
-},
-{
-  "codigo": "310003",
-  "nombre": "Biología",
-  "ciclo": 1,
-  "tipo": "O",
-  "creditos": 3
-},
-{
-  "codigo": "310004",
-  "nombre": "Química y bioquímica",
-  "ciclo": 1,
-  "tipo": "O",
-  "creditos": 3
-},
-{
-  "codigo": "132103",
-  "nombre": "Conceptos matemáticos",
-  "ciclo": 1,
-  "tipo": "O",
-  "creditos": 3
-},
-{
-  "codigo": "150286",
-  "nombre": "Actividades I",
-  "ciclo": 1,
-  "tipo": "O",
-  "creditos": 1
-},
-{
-  "codigo": "150285",
-  "nombre": "Inglés I",
-  "ciclo": 1,
-  "tipo": "O",
-  "creditos": 1
-},
-{
-  "codigo": "170009",
-  "nombre": "Teología I",
-  "ciclo": 2,
-  "tipo": "O",
-  "creditos": 4,
-  "requisitos": ["170001"]
-},
-{
-  "codigo": "360017",
-  "nombre": "Psicología en la atención de Enfermería",
-  "ciclo": 2,
-  "tipo": "O",
-  "creditos": 2,
-  "requisitos": ["360001"]
-},
-{
-  "codigo": "150284",
-  "nombre": "Redacción académica",
-  "ciclo": 2,
-  "tipo": "O",
-  "creditos": 5,
-  "requisitos": ["150283"]
-},
-{
-  "codigo": "360016",
-  "nombre": "Microbiología y parasitología",
-  "ciclo": 2,
-  "tipo": "O",
-  "creditos": 3,
-  "requisitos": ["310003"]
-},
-{
-  "codigo": "350001",
-  "nombre": "Anatomía",
-  "ciclo": 2,
-  "tipo": "O",
-  "creditos": 4,
-  "requisitos": ["310003"]
-},
-{
-  "codigo": "350097",
-  "nombre": "Física aplicada a la salud",
-  "ciclo": 2,
-  "tipo": "O",
-  "creditos": 3,
-  "requisitos": ["132103"]
-},
-{
-  "codigo": "150288",
-  "nombre": "Inglés II",
-  "ciclo": 2,
-  "tipo": "O",
-  "creditos": 1
-},
+const cursos = [{"codigo": "170001","nombre": "Antropología religiosa","ciclo": 1,"tipo": "O","creditos": 4},
+{"codigo": "360001","nombre": "Introducción a la enfermería","ciclo": 1,"tipo": "O","creditos": 3},
+{"codigo": "150283","nombre": "Comunicación escrita académica","ciclo": 1,"tipo": "O","creditos": 5},
+{"codigo": "310003","nombre": "Biología","ciclo": 1,"tipo": "O","creditos": 3},
+{"codigo": "310004","nombre": "Química y bioquímica","ciclo": 1,"tipo": "O","creditos": 3},
+{"codigo": "132103","nombre": "Conceptos matemáticos","ciclo": 1,"tipo": "O","creditos": 3},
+{"codigo": "150286","nombre": "Actividades I","ciclo": 1,"tipo": "O","creditos": 1},
+{"codigo": "150285","nombre": "Inglés I","ciclo": 1,"tipo": "O","creditos": 1},
+{"codigo": "170009","nombre": "Teología I","ciclo": 2,"tipo": "O","creditos": 4,"requisitos": ["170001"]},
+{"codigo": "360017","nombre": "Psicología en la atención de Enfermería","ciclo": 2,"tipo": "O","creditos": 2,"requisitos": ["360001"]},
+{"codigo": "150284","nombre": "Redacción académica","ciclo": 2,"tipo": "O","creditos": 5,"requisitos": ["150283"]},
+{"codigo": "360016","nombre": "Microbiología y parasitología","ciclo": 2,"tipo": "O","creditos": 3,"requisitos": ["310003"]},
+{"codigo": "350001","nombre": "Anatomía","ciclo": 2,"tipo": "O","creditos": 4,"requisitos": ["310003"]},
+{"codigo": "350097","nombre": "Física aplicada a la salud","ciclo": 2,"tipo": "O","creditos": 3,"requisitos": ["132103"]},
+{"codigo": "150288","nombre": "Inglés II","ciclo": 2,"tipo": "O","creditos": 1},
 {"codigo": "170010","nombre": "Teología II","ciclo": 3,"tipo": "O","creditos": 4,"requisitos": ["170009"]},
 {"codigo": "360018","nombre": "Proceso de cuidados en Enfermería","ciclo": 3,"tipo": "O","creditos": 3,"requisitos": ["360017"]},
 {"codigo": "350005","nombre": "Estrategias de prevención y promoción de la salud","ciclo": 3,"tipo": "O","creditos": 3,"requisitos": ["360017"]},
@@ -133,7 +37,7 @@ const cursos = [{
 {"codigo": "360089","nombre": "Enfermería quirúrgica","ciclo": 6,"tipo": "E","creditos": 3,"requisitos": ["360085"],"creditosTotalesRequisito": 108},
 {"codigo": "350102","nombre": "Tecnología de la información en salud","ciclo": 6,"tipo": "E","creditos": 3,"creditosTotalesRequisito": 108},
 {"codigo": "150294","nombre": "Inglés VI","ciclo": 6,"tipo": "O","creditos": 1},
-{"codigo": "360090","nombre": "Enfermería en salud del niño y adolescente""ciclo": 7,"tipo": "O","creditos": 7,"requisitos": ["360087"]},
+{"codigo": "360090","nombre": "Enfermería en salud del niño y adolescente", "ciclo": 7,"tipo": "O","creditos": 7,"requisitos": ["360087"]},
 {"codigo": "360093","nombre": "Gerencia en los servicios de salud","ciclo": 7,"tipo": "O","creditos": 3,"requisitos": ["360088"]},
 {"codigo": "360091","nombre": "Enfermería en salud mental y psiquiátrica","ciclo": 7,"tipo": "O","creditos": 7,"requisitos": ["360088"]},
 {"codigo": "350096","nombre": "Lengua nativa II","ciclo": 7,"tipo": "O","creditos": 3,"requisitos": ["350095"]},
@@ -148,65 +52,42 @@ const cursos = [{
 {"codigo": "150300","nombre": "Inglés IX","ciclo": 9,"tipo": "O","creditos": 1},
 {"codigo": "350112","nombre": "Internado II","ciclo": 10,"tipo": "O","creditos": 22,"requisitos": ["350111"]},
 {"codigo": "350110","nombre": "Curso de Trabajo de Investigación – Taller de sustentación de tesis","ciclo": 10,"tipo": "O","creditos": 2,"requisitos": ["350109"]},
-{"codigo": "150303","nombre": "Inglés X","ciclo": 10,"tipo": "O","creditos": 1},];]
+{"codigo": "150303","nombre": "Inglés X","ciclo": 10,"tipo": "O","creditos": 1},]
 const estado = {};
 
 function guardarEstado() {
-  localStorage.setItem('estadoCursos', JSON.stringify(estado));
-}
+  localStorage.setItem('estadoCursos', JSON.stringify(estado));}
 
 function cargarEstado() {
   const datos = localStorage.getItem('estadoCursos');
   if (datos) {
-    Object.assign(estado, JSON.parse(datos));
-  }
-}
+    Object.assign(estado, JSON.parse(datos));}}
 
 function requisitosCumplidos(curso) {
   if (curso.requisitos) {
     for (const req of curso.requisitos) {
-      if (!estado[req]) return false;
-    }
-  }
+      if (!estado[req]) return false;}}
   if (curso.creditosTotalesRequisito) {
     let total = 0;
     for (const c of cursos) {
       if (estado[c.codigo]) {
-        total += c.creditos;
-      }
-    }
-    if (total < curso.creditosTotalesRequisito) return false;
-  }
-  return true;
-}
+        total += c.creditos;}}
+    if (total < curso.creditosTotalesRequisito) return false;}
+  return true;}
 
 function contarElectivosAprobados() {
-  return cursos.filter(c => c.tipo === 'E' && estado[c.codigo]).length;
-}
+  return cursos.filter(c => c.tipo === 'E' && estado[c.codigo]).length;}
 
 function contarCreditosAprobados() {
-  return cursos.reduce((acc, c) => acc + (estado[c.codigo] ? c.creditos : 0), 0);
-}
+  return cursos.reduce((acc, c) => acc + (estado[c.codigo] ? c.creditos : 0), 0);}
 
 function crearCajaCurso(curso) {
   const div = document.createElement('div');
   div.className = 'curso';
   div.dataset.codigo = curso.codigo;
   div.innerHTML = `<strong>${curso.codigo}</strong><br>${curso.nombre}`;
-  if (estado[curso.codigo]) {
-    div.classList.add('aprobado');
-  } else if (!requisitosCumplidos(curso)) {
-    div.classList.add('bloqueado');
-  }
-  div.addEventListener('click', () => {
-    if (!requisitosCumplidos(curso)) return;
-    estado[curso.codigo] = !estado[curso.codigo];
-    guardarEstado();
-    renderizarCursos();
-  });
-  return div;
-}
-
+  if (estado[curso.codigo]) {div.classList.add('aprobado');} else if (!requisitosCumplidos(curso)) {div.classList.add('bloqueado');}
+  div.addEventListener('click', () => {if (!requisitosCumplidos(curso)) return;estado[curso.codigo] = !estado[curso.codigo];guardarEstado();renderizarCursos();});return div;}
 function renderizarCursos() {
   const contenedor = document.getElementById('malla');
   contenedor.innerHTML = '';
@@ -220,22 +101,14 @@ function renderizarCursos() {
     const cursosCiclo = cursos.filter(c => c.ciclo === ciclo);
     for (const curso of cursosCiclo) {
       const caja = crearCajaCurso(curso);
-      columna.appendChild(caja);
-    }
-    contenedor.appendChild(columna);
-  }
-
+      columna.appendChild(caja);}
+    contenedor.appendChild(columna);}
   const creditos = contarCreditosAprobados();
   const electivos = contarElectivosAprobados();
   const egreso = document.getElementById('egreso');
   if (creditos >= 260 && electivos >= 2) {
-    egreso.textContent = '🎓 ¡Puedes egresar!';
-  } else {
-    egreso.textContent = '';
-  }
-}
-
+    egreso.textContent = '🎓 ¡Puedes egresar!';} else {
+    egreso.textContent = '';}
 window.addEventListener('DOMContentLoaded', () => {
   cargarEstado();
-  renderizarCursos();
-});
+  renderizarCursos();});
