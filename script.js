@@ -56,59 +56,98 @@ const cursos = [{"codigo": "170001","nombre": "Antropología religiosa","ciclo":
 const estado = {};
 
 function guardarEstado() {
-  localStorage.setItem('estadoCursos', JSON.stringify(estado));}
+  localStorage.setItem('estadoCursos', JSON.stringify(estado));
+}
 
 function cargarEstado() {
   const datos = localStorage.getItem('estadoCursos');
   if (datos) {
-    Object.assign(estado, JSON.parse(datos));}}
+    Object.assign(estado, JSON.parse(datos));
+  }
+}
 
 function requisitosCumplidos(curso) {
   if (curso.requisitos) {
     for (const req of curso.requisitos) {
-      if (!estado[req]) return false;}}
+      if (!estado[req]) return false;
+    }
+  }
   if (curso.creditosTotalesRequisito) {
     let total = 0;
     for (const c of cursos) {
       if (estado[c.codigo]) {
-        total += c.creditos;}}
-    if (total < curso.creditosTotalesRequisito) return false;}
-  return true;}
+        total += c.creditos;
+      }
+    }
+    if (total < curso.creditosTotalesRequisito) return false;
+  }
+  return true;
+}
 
 function contarElectivosAprobados() {
-  return cursos.filter(c => c.tipo === 'E' && estado[c.codigo]).length;}
+  return cursos.filter(c => c.tipo === 'E' && estado[c.codigo]).length;
+}
 
 function contarCreditosAprobados() {
-  return cursos.reduce((acc, c) => acc + (estado[c.codigo] ? c.creditos : 0), 0);}
+  return cursos.reduce((acc, c) => acc + (estado[c.codigo] ? c.creditos : 0), 0);
+}
 
 function crearCajaCurso(curso) {
   const div = document.createElement('div');
   div.className = 'curso';
   div.dataset.codigo = curso.codigo;
   div.innerHTML = `<strong>${curso.codigo}</strong><br>${curso.nombre}`;
-  if (estado[curso.codigo]) {div.classList.add('aprobado');} else if (!requisitosCumplidos(curso)) {div.classList.add('bloqueado');}
-  div.addEventListener('click', () => {if (!requisitosCumplidos(curso)) return;estado[curso.codigo] = !estado[curso.codigo];guardarEstado();renderizarCursos();});return div;}
+
+  if (estado[curso.codigo]) {
+    div.classList.add('aprobado');
+  } else if (!requisitosCumplidos(curso)) {
+    div.classList.add('bloqueado');
+  }
+
+  div.addEventListener('click', () => {
+    if (!requisitosCumplidos(curso)) return;
+    estado[curso.codigo] = !estado[curso.codigo];
+    guardarEstado();
+    renderizarCursos();
+  });
+
+  return div;
+}
+
 function renderizarCursos() {
   const contenedor = document.getElementById('malla');
   contenedor.innerHTML = '';
-  const ciclos = [...new Set(cursos.map(c => c.ciclo))].sort((a,b) => a - b);
+  const ciclos = [...new Set(cursos.map(c => c.ciclo))].sort((a, b) => a - b);
+
   for (const ciclo of ciclos) {
     const columna = document.createElement('div');
     columna.className = 'ciclo';
     const titulo = document.createElement('h3');
     titulo.textContent = `Semestre ${ciclo}`;
     columna.appendChild(titulo);
+
     const cursosCiclo = cursos.filter(c => c.ciclo === ciclo);
     for (const curso of cursosCiclo) {
       const caja = crearCajaCurso(curso);
-      columna.appendChild(caja);}
-    contenedor.appendChild(columna);}
+      columna.appendChild(caja);
+    }
+
+    contenedor.appendChild(columna);
+  }
+
   const creditos = contarCreditosAprobados();
   const electivos = contarElectivosAprobados();
   const egreso = document.getElementById('egreso');
+
   if (creditos >= 260 && electivos >= 2) {
-    egreso.textContent = '🎓 ¡Puedes egresar!';} else {
-    egreso.textContent = '';}
+    egreso.textContent = '🎓 ¡Puedes egresar!';
+  } else {
+    egreso.textContent = '';
+  }
+}
+
+// Este bloque va FUERA de la función `renderizarCursos`
 window.addEventListener('DOMContentLoaded', () => {
   cargarEstado();
-  renderizarCursos();});
+  renderizarCursos();
+});
