@@ -52,7 +52,7 @@ const cursos = [{"codigo": "170001","nombre": "Antropología religiosa","ciclo":
 {"codigo": "150300","nombre": "Inglés IX","ciclo": 9,"tipo": "O","creditos": 1},
 {"codigo": "350112","nombre": "Internado II","ciclo": 10,"tipo": "O","creditos": 22,"requisitos": ["350111"]},
 {"codigo": "350110","nombre": "Curso de Trabajo de Investigación – Taller de sustentación de tesis","ciclo": 10,"tipo": "O","creditos": 2,"requisitos": ["350109"]},
-{"codigo": "150303","nombre": "Inglés X","ciclo": 10,"tipo": "O","creditos": 1},]
+{"codigo": "150303","nombre": "Inglés X","ciclo": 10,"tipo": "O","creditos": 1}];
 const estado = {};
 
 function guardarEstado() {
