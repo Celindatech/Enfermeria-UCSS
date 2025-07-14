@@ -1,68 +1,63 @@
 body {
-  font-family: "Segoe UI", sans-serif;
+  font-family: sans-serif;
   background: #fff0f5;
-  margin: 0;
-  padding: 2rem;
   color: #333;
+  text-align: center;
+  padding: 20px;
 }
 
 h1 {
-  text-align: center;
-  color: #c2185b;
+  color: #d63384;
 }
 
-#malla {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
+.contenedor-malla {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.ciclo {
+  background: #ffe3ed;
+  border-radius: 8px;
+  padding: 10px;
+  width: 250px;
+  box-shadow: 0 2px 4px #ccc;
+}
+
+.ciclo h3 {
+  color: #b51c6e;
 }
 
 .curso {
-  border: 2px solid #f8bbd0;
-  background: #fce4ec;
-  padding: 1rem;
-  border-radius: 12px;
+  margin: 6px 0;
+  padding: 8px;
+  background: white;
+  border: 2px solid #d63384;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
 }
 
 .curso:hover {
-  background: #f8bbd0;
+  transform: scale(1.03);
 }
 
 .curso.aprobado {
-  background-color: #f48fb1;
-  border-color: #c2185b;
-  color: white;
+  background-color: #ffc0cb;
+  border-color: #d63384;
+  text-decoration: line-through;
 }
 
 .curso.bloqueado {
-  opacity: 0.5;
-  cursor: not-allowed;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
-.curso h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-}
-
-.curso .info {
-  font-size: 0.9rem;
-  line-height: 1.3;
-}
-
-#mensaje-egreso {
-  margin-top: 2rem;
-  padding: 1rem;
-  text-align: center;
-  background: #f8bbd0;
-  color: #880e4f;
+#egreso {
+  margin-top: 20px;
+  font-size: 1.3em;
+  color: #d63384;
   font-weight: bold;
-  border-radius: 10px;
-}
-
-.oculto {
-  display: none;
 }
