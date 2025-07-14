@@ -8,7 +8,6 @@ const cursos = [
   { codigo: "132103", nombre: "Conceptos matemáticos", ciclo: 1, tipo: "O", creditos: 3, requisitos: [] },
   { codigo: "150286", nombre: "Actividades I", ciclo: 1, tipo: "O", creditos: 1, requisitos: [] },
   { codigo: "150285", nombre: "Inglés I", ciclo: 1, tipo: "O", creditos: 1, requisitos: [] },
-
   { codigo: "170009", nombre: "Teología I", ciclo: 2, tipo: "O", creditos: 4, requisitos: ["170001"] },
   { codigo: "360017", nombre: "Psicología en la atención de Enfermería", ciclo: 2, tipo: "O", creditos: 2, requisitos: ["360001"] },
   { codigo: "150284", nombre: "Redacción académica", ciclo: 2, tipo: "O", creditos: 5, requisitos: ["150283"] },
