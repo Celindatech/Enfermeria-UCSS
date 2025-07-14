@@ -114,7 +114,14 @@ function crearCajaCurso(curso) {
   return div;
 }
 
-function renderizarCursos() {
+function renderizarCursos() {function lanzarConfeti() {
+  confetti({
+    particleCount: 150,
+    spread: 100,
+    origin: { y: 0.6 }
+  });
+}
+
   const contenedor = document.getElementById('malla');
   contenedor.innerHTML = '';
   const ciclos = [...new Set(cursos.map(c => c.ciclo))].sort((a, b) => a - b);
@@ -137,17 +144,19 @@ function renderizarCursos() {
 
   const creditos = contarCreditosAprobados();
   const electivos = contarElectivosAprobados();
-  const egreso = document.getElementById('egreso');
+  const yaEgresaste = egreso.classList.contains('animado');
 
- if (creditos >= 260 && electivos >= 2) {
+if (creditos >= 260 && electivos >= 2) {
   egreso.textContent = '🎓 ¡Puedes egresar!';
-  egreso.classList.add('animado');
+  if (!yaEgresaste) {
+    egreso.classList.add('animado');
+    lanzarConfeti();
+  }
 } else {
   egreso.textContent = '';
   egreso.classList.remove('animado');
 }
 
-}
 
 // Este bloque va FUERA de la función `renderizarCursos`
 window.addEventListener('DOMContentLoaded', () => {
