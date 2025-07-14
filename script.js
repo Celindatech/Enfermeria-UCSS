@@ -118,7 +118,7 @@ function renderizarCursos() {
   const contenedor = document.getElementById('malla');
   contenedor.innerHTML = '';
   const ciclos = [...new Set(cursos.map(c => c.ciclo))].sort((a, b) => a - b);
-  
+
   for (const ciclo of ciclos) {
     const columna = document.createElement('div');
     columna.className = 'ciclo';
@@ -152,7 +152,14 @@ function renderizarCursos() {
   }
 }
 
-// 🟩 Esto sí va afuera, al final del archivo
+function lanzarConfeti() {
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   cargarEstado();
   renderizarCursos();
