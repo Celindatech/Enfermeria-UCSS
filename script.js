@@ -139,11 +139,14 @@ function renderizarCursos() {
   const electivos = contarElectivosAprobados();
   const egreso = document.getElementById('egreso');
 
-  if (creditos >= 260 && electivos >= 2) {
-    egreso.textContent = '🎓 ¡Puedes egresar!';
-  } else {
-    egreso.textContent = '';
-  }
+ if (creditos >= 260 && electivos >= 2) {
+  egreso.textContent = '🎓 ¡Puedes egresar!';
+  egreso.classList.add('animado');
+} else {
+  egreso.textContent = '';
+  egreso.classList.remove('animado');
+}
+
 }
 
 // Este bloque va FUERA de la función `renderizarCursos`
