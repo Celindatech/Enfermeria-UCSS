@@ -55,3 +55,9 @@ h1 {
   border: 1px solid #ff66b2;
   box-shadow: 0 0 5px #ff99cc;
 }
+.curso.electivo.aprobado {
+  background-color: #ffd6ea; /* igual que aprobado normal */
+  border-color: #d63384;
+  box-shadow: 0 0 5px #e94ca0;
+  color: #b51c6e;
+}
