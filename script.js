@@ -94,7 +94,7 @@ function contarCreditosAprobados() {
 
 function crearCajaCurso(curso) {
   const div = document.createElement('div');
-  div.className = 'curso';
+  div.className = 'curso' + (curso.tipo === 'E' ? ' electivo' : '');
   div.dataset.codigo = curso.codigo;
   div.innerHTML = `<strong>${curso.codigo}</strong><br>${curso.nombre}`;
 
