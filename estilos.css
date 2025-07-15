@@ -43,6 +43,12 @@ h1 {
 .curso:hover {
   transform: scale(1.02);
 }
+.curso.aprobado {
+  background-color: #ffd6ea; /* rosa suave */
+  border-color: #d63384;
+  box-shadow: 0 0 5px #e94ca0;
+  color: #b51c6e;
+}
 
 .curso.electivo {
   background-color: #ffe0f0;
