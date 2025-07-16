@@ -38,7 +38,7 @@ const cursos = [{
         { nombre: "Fisiopatología general", tipo: "O", creditos: 4, requisitos: ["Fisiología"] },
         { nombre: "Enfermería en salud familiar y comunitaria", tipo: "O", creditos: 6, requisitos: ["Estrategias de prevención y promoción de la salud"] },
         { nombre: "Epidemiología", tipo: "O", creditos: 3, requisitos: ["Estadística aplicada"] },
-        { nombre: "Inglés IV", tipo: "O", creditos: 1 }]}},
+        { nombre: "Inglés IV", tipo: "O", creditos: 1 }]},
 {año: 3,
   ciclos: [{nombre: "V semestre",
       cursos: [
