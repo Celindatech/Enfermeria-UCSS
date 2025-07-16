@@ -151,7 +151,9 @@ function requisitosCumplidos(curso) {
 }
 
 function contarElectivosAprobados() {
-  return cursos.filter(c => c.tipo === 'E' && estado[c.codigo]).length;
+ return cursos.flatMap(ciclo => ciclo.ciclos.flatMap(ci => ci.cursos))
+             .filter(c => c.tipo === 'E' && estado[c.nombre]).length;
+
 }
 
 function contarCreditosAprobados() {
@@ -161,8 +163,8 @@ function contarCreditosAprobados() {
 function crearCajaCurso(curso) {
   const div = document.createElement('div');
   div.className = 'curso' + (curso.tipo === 'E' ? ' electivo' : '');
-  div.dataset.codigo = curso.codigo;
-  div.innerHTML = `<strong>${curso.codigo}</strong><br>${curso.nombre}`;
+div.innerHTML = `<strong>${curso.nombre}</strong>`;
+
 
   if (estado[curso.codigo]) {
     div.classList.add('aprobado');
