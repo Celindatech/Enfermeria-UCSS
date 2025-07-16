@@ -1,7 +1,6 @@
 const cursos = [{
   año: 1,
-  ciclos: [
-    {
+  ciclos: [{
       nombre: "I semestre",
       cursos: [
         { nombre: "Antropología religiosa", tipo: "O", creditos: 4 },
@@ -11,11 +10,8 @@ const cursos = [{
         { nombre: "Química y bioquímica", tipo: "O", creditos: 3 },
         { nombre: "Conceptos matemáticos", tipo: "O", creditos: 3 },
         { nombre: "Actividades I", tipo: "O", creditos: 1 },
-        { nombre: "Inglés I", tipo: "O", creditos: 1 }
-      ]
-    },
-    {
-      nombre: "II semestre",
+        { nombre: "Inglés I", tipo: "O", creditos: 1 }]},
+    {nombre: "II semestre",
       cursos: [
         { nombre: "Teología I", tipo: "O", creditos: 3, prerequisitos: ["Antropología religiosa"] },
         { nombre: "Psicología en la atención de Enfermería", tipo: "O", creditos: 2, prerequisitos: ["Introducción a la enfermería"] },
@@ -23,16 +19,10 @@ const cursos = [{
         { nombre: "Microbiología y parasitología", tipo: "O", creditos: 3, prerequisitos: ["Biología"] },
         { nombre: "Anatomía", tipo: "O", creditos: 4, prerequisitos: ["Biología"] },
         { nombre: "Física aplicada a ciencias de la salud", tipo: "O", creditos: 3, prerequisitos: ["Conceptos matemáticos"] },
-        { nombre: "Inglés II", tipo: "O", creditos: 1 }
-      ]
-    }
-  ]
-},
-{
-  año: 2,
+        { nombre: "Inglés II", tipo: "O", creditos: 1 }]}]},
+{ año: 2,
   ciclos: [
-    {
-      nombre: "III semestre",
+    {nombre: "III semestre",
       cursos: [
         { nombre: "Teología II", tipo: "O", creditos: 4, prerequisitos: ["Teología I"] },
         { nombre: "Proceso de cuidados en Enfermería", tipo: "O", creditos: 3, prerequisitos: ["Psicología en la atención de Enfermería"] },
