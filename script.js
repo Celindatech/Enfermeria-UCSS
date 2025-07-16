@@ -231,8 +231,4 @@ window.addEventListener('DOMContentLoaded', () => {
   renderizarCursos();document.getElementById('reiniciar').addEventListener('click', () => {
   if (confirm('¿Estás segura/o de que deseas reiniciar la malla? Se perderá tu progreso.')) {
     localStorage.removeItem('estadoCursos');
-    location.reload();
-  }
-});
-
-});
+    location.reload();}});});
