@@ -118,7 +118,6 @@ const cursos = [{
     }
   ]
 }];
-
 const estado = {};
 
 function guardarEstado() {
@@ -127,9 +126,7 @@ function guardarEstado() {
 
 function cargarEstado() {
   const datos = localStorage.getItem('estadoCursos');
-  if (datos) {
-    Object.assign(estado, JSON.parse(datos));
-  }
+  if (datos) Object.assign(estado, JSON.parse(datos));
 }
 
 function requisitosCumplidos(curso) {
@@ -138,35 +135,29 @@ function requisitosCumplidos(curso) {
       if (!estado[req]) return false;
     }
   }
-  if (curso.creditosTotalesRequisito) {
-    let total = 0;
-    for (const c of cursos) {
-      if (estado[c.codigo]) {
-        total += c.creditos;
-      }
-    }
-    if (total < curso.creditosTotalesRequisito) return false;
-  }
   return true;
 }
 
-function contarElectivosAprobados() {
- return cursos.flatMap(ciclo => ciclo.ciclos.flatMap(ci => ci.cursos))
-             .filter(c => c.tipo === 'E' && estado[c.nombre]).length;
+function todosLosCursos() {
+  return cursos.flatMap(a => a.ciclos.flatMap(c => c.cursos));
+}
 
+function contarElectivosAprobados() {
+  return todosLosCursos().filter(c => c.tipo === 'E' && estado[c.nombre]).length;
 }
 
 function contarCreditosAprobados() {
-  return cursos.reduce((acc, c) => acc + (estado[c.codigo] ? c.creditos : 0), 0);
+  return todosLosCursos().reduce((total, c) => total + (estado[c.nombre] ? c.creditos : 0), 0);
 }
 
 function crearCajaCurso(curso) {
   const div = document.createElement('div');
-  div.className = 'curso' + (curso.tipo === 'E' ? ' electivo' : '');
-div.innerHTML = `<strong>${curso.nombre}</strong>`;
+  div.className = 'curso';
+  if (curso.tipo === 'E') div.classList.add('electivo');
 
+  div.innerHTML = `<strong>${curso.nombre}</strong>`;
 
-  if (estado[curso.codigo]) {
+  if (estado[curso.nombre]) {
     div.classList.add('aprobado');
   } else if (!requisitosCumplidos(curso)) {
     div.classList.add('bloqueado');
@@ -174,7 +165,7 @@ div.innerHTML = `<strong>${curso.nombre}</strong>`;
 
   div.addEventListener('click', () => {
     if (!requisitosCumplidos(curso)) return;
-    estado[curso.codigo] = !estado[curso.codigo];
+    estado[curso.nombre] = !estado[curso.nombre];
     guardarEstado();
     renderizarCursos();
   });
@@ -182,25 +173,38 @@ div.innerHTML = `<strong>${curso.nombre}</strong>`;
   return div;
 }
 
+function lanzarConfeti() {
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}
+
 function renderizarCursos() {
   const contenedor = document.getElementById('malla');
   contenedor.innerHTML = '';
-  const ciclos = [...new Set(cursos.map(c => c.ciclo))].sort((a, b) => a - b);
 
-  for (const ciclo of ciclos) {
-    const columna = document.createElement('div');
-    columna.className = 'ciclo';
-    const titulo = document.createElement('h3');
-    titulo.textContent = `Semestre ${ciclo}`;
-    columna.appendChild(titulo);
+  for (const año of cursos) {
+    const bloqueAño = document.createElement('div');
+    bloqueAño.className = 'año';
 
-    const cursosCiclo = cursos.filter(c => c.ciclo === ciclo);
-    for (const curso of cursosCiclo) {
-      const caja = crearCajaCurso(curso);
-      columna.appendChild(caja);
+    for (const ciclo of año.ciclos) {
+      const columna = document.createElement('div');
+      columna.className = 'ciclo';
+      const titulo = document.createElement('h3');
+      titulo.textContent = ciclo.nombre;
+      columna.appendChild(titulo);
+
+      for (const curso of ciclo.cursos) {
+        const caja = crearCajaCurso(curso);
+        columna.appendChild(caja);
+      }
+
+      bloqueAño.appendChild(columna);
     }
 
-    contenedor.appendChild(columna);
+    contenedor.appendChild(bloqueAño);
   }
 
   const creditos = contarCreditosAprobados();
@@ -220,17 +224,13 @@ function renderizarCursos() {
   }
 }
 
-function lanzarConfeti() {
-  confetti({
-    particleCount: 150,
-    spread: 70,
-    origin: { y: 0.6 }
-  });
-}
-
 window.addEventListener('DOMContentLoaded', () => {
   cargarEstado();
-  renderizarCursos();document.getElementById('reiniciar').addEventListener('click', () => {
-  if (confirm('¿Estás segura/o de que deseas reiniciar la malla? Se perderá tu progreso.')) {
-    localStorage.removeItem('estadoCursos');
-    location.reload();}});});
+  renderizarCursos();
+  document.getElementById('reiniciar').addEventListener('click', () => {
+    if (confirm('¿Deseas reiniciar la malla? Se borrará tu progreso.')) {
+      localStorage.removeItem('estadoCursos');
+      location.reload();
+    }
+  });
+});
