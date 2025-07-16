@@ -1,58 +1,127 @@
-const cursos = [{"codigo": "170001","nombre": "Antropología religiosa","ciclo": 1,"tipo": "O","creditos": 4},
-{"codigo": "360001","nombre": "Introducción a la enfermería","ciclo": 1,"tipo": "O","creditos": 3},
-{"codigo": "150283","nombre": "Comunicación escrita académica","ciclo": 1,"tipo": "O","creditos": 5},
-{"codigo": "310003","nombre": "Biología","ciclo": 1,"tipo": "O","creditos": 3},
-{"codigo": "310004","nombre": "Química y bioquímica","ciclo": 1,"tipo": "O","creditos": 3},
-{"codigo": "132103","nombre": "Conceptos matemáticos","ciclo": 1,"tipo": "O","creditos": 3},
-{"codigo": "150286","nombre": "Actividades I","ciclo": 1,"tipo": "O","creditos": 1},
-{"codigo": "150285","nombre": "Inglés I","ciclo": 1,"tipo": "O","creditos": 1},
-{"codigo": "170009","nombre": "Teología I","ciclo": 2,"tipo": "O","creditos": 4,"requisitos": ["170001"]},
-{"codigo": "360017","nombre": "Psicología en la atención de Enfermería","ciclo": 2,"tipo": "O","creditos": 2,"requisitos": ["360001"]},
-{"codigo": "150284","nombre": "Redacción académica","ciclo": 2,"tipo": "O","creditos": 5,"requisitos": ["150283"]},
-{"codigo": "360016","nombre": "Microbiología y parasitología","ciclo": 2,"tipo": "O","creditos": 3,"requisitos": ["310003"]},
-{"codigo": "350001","nombre": "Anatomía","ciclo": 2,"tipo": "O","creditos": 4,"requisitos": ["310003"]},
-{"codigo": "350097","nombre": "Física aplicada a la salud","ciclo": 2,"tipo": "O","creditos": 3,"requisitos": ["132103"]},
-{"codigo": "150288","nombre": "Inglés II","ciclo": 2,"tipo": "O","creditos": 1},
-{"codigo": "170010","nombre": "Teología II","ciclo": 3,"tipo": "O","creditos": 4,"requisitos": ["170009"]},
-{"codigo": "360018","nombre": "Proceso de cuidados en Enfermería","ciclo": 3,"tipo": "O","creditos": 3,"requisitos": ["360017"]},
-{"codigo": "350005","nombre": "Estrategias de prevención y promoción de la salud","ciclo": 3,"tipo": "O","creditos": 3,"requisitos": ["360017"]},
-{"codigo": "370001","nombre": "Nutrición y dietética","ciclo": 3,"tipo": "O","creditos": 3,"requisitos": ["360016"]},
-{"codigo": "350076","nombre": "Fisiología","ciclo": 3,"tipo": "O","creditos": 4,"requisitos": ["350001"]},
-{"codigo": "370024","nombre": "Estadística aplicada","ciclo": 3,"tipo": "O","creditos": 3,"requisitos": ["350097"]},
-{"codigo": "150289","nombre": "Inglés III","ciclo": 3,"tipo": "O","creditos": 1},
-{"codigo": "170031","nombre": "Ética, deontología y bioética","ciclo": 4,"tipo": "O","creditos": 4,"requisitos": ["170010"]},
-{"codigo": "360002","nombre": "Metodología de la atención en enfermería","ciclo": 4,"tipo": "O","creditos": 6,"requisitos": ["360018"]},
-{"codigo": "360084","nombre": "Fisiopatología general","ciclo": 4,"tipo": "O","creditos": 4,"requisitos": ["350076"]},
-{"codigo": "360083","nombre": "Enfermería en salud familiar y comunitaria","ciclo": 4,"tipo": "O","creditos": 6,"requisitos": ["350005"]},
-{"codigo": "350004","nombre": "Epidemiología","ciclo": 4,"tipo": "O","creditos": 3,"requisitos": ["370024"]},
-{"codigo": "150290","nombre": "Inglés IV","ciclo": 4,"tipo": "O","creditos": 1},
-{"codigo": "360085","nombre": "Enfermería en salud del adulto","ciclo": 5,"tipo": "O","creditos": 7,"requisitos": ["360002"]},
-{"codigo": "360086","nombre": "Farmacología y Terapéutica","ciclo": 5,"tipo": "O","creditos": 3,"requisitos": ["360084"]},
-{"codigo": "350095","nombre": "Lengua nativa I","ciclo": 5,"tipo": "O","creditos": 3,"creditosTotalesRequisito": 90},
-{"codigo": "370025","nombre": "Metodología de la investigación","ciclo": 5,"tipo": "O","creditos": 4,"requisitos": ["350004"]},
-{"codigo": "150291","nombre": "Inglés V","ciclo": 5,"tipo": "O","creditos": 1},
-{"codigo": "360087","nombre": "Enfermería en salud de la mujer y neonato","ciclo": 6,"tipo":"O","creditos": 7,"requisitos": ["360085"]},
-{"codigo": "360088","nombre": "Enfermería en salud del adulto mayor","ciclo": 6,"tipo": "O","creditos": 7,"requisitos": ["360085"]},
-{"codigo": "370026","nombre": "Seminario de investigación I","ciclo": 6,"tipo": "O","creditos": 4,"requisitos": ["370025"]},
-{"codigo": "360089","nombre": "Enfermería quirúrgica","ciclo": 6,"tipo": "E","creditos": 3,"requisitos": ["360085"],"creditosTotalesRequisito": 108},
-{"codigo": "350102","nombre": "Tecnología de la información en salud","ciclo": 6,"tipo": "E","creditos": 3,"creditosTotalesRequisito": 108},
-{"codigo": "150294","nombre": "Inglés VI","ciclo": 6,"tipo": "O","creditos": 1},
-{"codigo": "360090","nombre": "Enfermería en salud del niño y adolescente", "ciclo": 7,"tipo": "O","creditos": 7,"requisitos": ["360087"]},
-{"codigo": "360093","nombre": "Gerencia en los servicios de salud","ciclo": 7,"tipo": "O","creditos": 3,"requisitos": ["360088"]},
-{"codigo": "360091","nombre": "Enfermería en salud mental y psiquiátrica","ciclo": 7,"tipo": "O","creditos": 7,"requisitos": ["360088"]},
-{"codigo": "350096","nombre": "Lengua nativa II","ciclo": 7,"tipo": "O","creditos": 3,"requisitos": ["350095"]},
-{"codigo": "150297","nombre": "Inglés VII","ciclo": 7,"tipo": "O","creditos": 1},
-{"codigo": "350008","nombre": "Cuidados paliativos","ciclo": 8,"tipo": "O","creditos": 6,"requisitos": ["360090"]},
-{"codigo": "360092","nombre": "Enfermería en emergencias, urgencias y desastres","ciclo": 8,"tipo": "O","creditos": 6,"requisitos": ["360091"]},
-{"codigo": "350109","nombre": "Seminario de investigación II","ciclo": 8,"tipo": "O","creditos": 6,"requisitos": ["370026"]},
-{"codigo": "350101","nombre": "Docencia en Salud","ciclo": 8,"tipo": "E","creditos": 3,"creditosTotalesRequisito": 151},
-{"codigo": "350100","nombre": "Marketing Empresarial en salud","ciclo": 8,"tipo": "E","creditos": 3,"creditosTotalesRequisito": 151},
-{"codigo": "150298","nombre": "Inglés VIII","ciclo": 8,"tipo": "O","creditos": 1},
-{"codigo": "350111","nombre": "Internado I","ciclo": 9,"tipo": "O","creditos": 22,"creditosTotalesRequisito": 173},
-{"codigo": "150300","nombre": "Inglés IX","ciclo": 9,"tipo": "O","creditos": 1},
-{"codigo": "350112","nombre": "Internado II","ciclo": 10,"tipo": "O","creditos": 22,"requisitos": ["350111"]},
-{"codigo": "350110","nombre": "Curso de Trabajo de Investigación – Taller de sustentación de tesis","ciclo": 10,"tipo": "O","creditos": 2,"requisitos": ["350109"]},
-{"codigo": "150303","nombre": "Inglés X","ciclo": 10,"tipo": "O","creditos": 1}];
+const cursos = [{    año: 1,
+    ciclos: [
+      {
+        nombre: "I semestre",
+        cursos: [
+          { nombre: "Antropología religiosa", tipo: "O", creditos: 4 },
+          { nombre: "Introducción a la enfermería", tipo: "O", creditos: 3 },
+          { nombre: "Lengua: Comunicación escrita académica", tipo: "O", creditos: 5 },
+          { nombre: "Biología", tipo: "O", creditos: 3 },
+          { nombre: "Química y bioquímica", tipo: "O", creditos: 3 },
+          { nombre: "Conceptos matemáticos", tipo: "O", creditos: 3 },
+          { nombre: "Actividades I", tipo: "O", creditos: 1 },
+          { nombre: "Inglés I", tipo: "O", creditos: 1 }
+        ]
+      },
+      {
+        nombre: "II semestre",
+        cursos: [
+          { nombre: "Teología I", tipo: "O", creditos: 3, prerequisitos: ["Antropología religiosa"] },
+          { nombre: "Psicología en la atención de Enfermería", tipo: "O", creditos: 2, prerequisitos: ["Introducción a la enfermería"] },
+          { nombre: "Redacción académica", tipo: "O", creditos: 5, prerequisitos: ["Lengua: Comunicación escrita académica"] },
+          { nombre: "Microbiología y parasitología", tipo: "O", creditos: 3, prerequisitos: ["Biología"] },
+          { nombre: "Anatomía", tipo: "O", creditos: 4, prerequisitos: ["Biología"] },
+          { nombre: "Física aplicada a ciencias de la salud", tipo: "O", creditos: 3, prerequisitos: ["Conceptos matemáticos"] },
+          { nombre: "Inglés II", tipo: "O", creditos: 1 }
+              año: 2,
+    ciclos: [
+      {
+        nombre: "III semestre",
+        cursos: [
+          { nombre: "Teología II", tipo: "O", creditos: 4, prerequisitos: ["Teología I"] },
+          { nombre: "Proceso de cuidados en Enfermería", tipo: "O", creditos: 3, prerequisitos: ["Psicología en la atención de Enfermería"] },
+          { nombre: "Estrategias de prevención y promoción de la salud", tipo: "O", creditos: 3, prerequisitos: ["Psicología en la atención de Enfermería"] },
+          { nombre: "Nutrición y dietética", tipo: "O", creditos: 3, prerequisitos: ["Microbiología y parasitología"] },
+          { nombre: "Fisiología", tipo: "O", creditos: 4, prerequisitos: ["Anatomía"] },
+          { nombre: "Estadística aplicada", tipo: "O", creditos: 3, prerequisitos: ["Física aplicada a ciencias de la salud"] },
+          { nombre: "Inglés III", tipo: "O", creditos: 1 }
+        ]
+      },
+      {
+        nombre: "IV semestre",
+        cursos: [
+          { nombre: "Ética, deontología y bioética", tipo: "O", creditos: 4, prerequisitos: ["Teología II"] },
+          { nombre: "Metodología de la atención en enfermería", tipo: "O", creditos: 6, prerequisitos: ["Proceso de cuidados en Enfermería"] },
+          { nombre: "Fisiopatología general", tipo: "O", creditos: 4, prerequisitos: ["Fisiología"] },
+          { nombre: "Enfermería en salud familiar y comunitaria", tipo: "O", creditos: 6, prerequisitos: ["Estrategias de prevención y promoción de la salud"] },
+          { nombre: "Epidemiología", tipo: "O", creditos: 3, prerequisitos: ["Estadística aplicada"] },
+          { nombre: "Inglés IV", tipo: "O", creditos: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    año: 3,
+    ciclos: [
+      {
+        nombre: "V semestre",
+        cursos: [
+          { nombre: "Enfermería en salud del adulto", tipo: "O", creditos: 7, prerequisitos: ["Metodología de la atención en enfermería"] },
+          { nombre: "Farmacología y Terapéutica", tipo: "O", creditos: 3, prerequisitos: ["Fisiopatología general"] },
+          { nombre: "Lengua nativa I", tipo: "O", creditos: 3, prerequisitos: ["acumular mínimo 90 créditos"] },
+          { nombre: "Metodología de la investigación", tipo: "O", creditos: 4, prerequisitos: ["Epidemiología"] },
+          { nombre: "Inglés V", tipo: "O", creditos: 1 }
+        ]
+      },
+      {
+        nombre: "VI semestre",
+        cursos: [
+          { nombre: "Enfermería en salud de la mujer y neonato", tipo: "O", creditos: 7, prerequisitos: ["Enfermería en salud del adulto"] },
+          { nombre: "Enfermería en salud del adulto mayor", tipo: "O", creditos: 7, prerequisitos: ["Enfermería en salud del adulto"] },
+          { nombre: "Seminario de investigación I", tipo: "O", creditos: 4, prerequisitos: ["Metodología de la investigación"] },
+          { nombre: "Enfermería quirúrgica", tipo: "E", creditos: 3, prerequisitos: ["Enfermería en salud del adulto", "acumular mínimo 108 créditos"] },
+          { nombre: "Tecnología de la información y la comunicación en salud", tipo: "E", creditos: 3, prerequisitos: ["acumular mínimo 108 créditos"] },
+          { nombre: "Inglés VI", tipo: "O", creditos: 1 }]
+      }
+    ]
+  },
+  {
+    año: 4,
+    ciclos: [
+      {
+        nombre: "VII semestre",
+        cursos: [
+          { nombre: "Enfermería en salud del niño y adolescente", tipo: "O", creditos: 7, prerequisitos: ["Enfermería en salud de la mujer y neonato"] },
+          { nombre: "Gerencia en los servicios de salud", tipo: "O", creditos: 3, prerequisitos: ["Enfermería en salud del adulto mayor"] },
+          { nombre: "Enfermería en salud mental y psiquiátrica", tipo: "O", creditos: 7, prerequisitos: ["Enfermería en salud del adulto mayor"] },
+          { nombre: "Lengua nativa II", tipo: "O", creditos: 3, prerequisitos: ["Lengua nativa I"] },
+          { nombre: "Inglés VII", tipo: "O", creditos: 1 }
+        ]
+      },
+      {
+        nombre: "VIII semestre",
+        cursos: [
+          { nombre: "Cuidados paliativos", tipo: "O", creditos: 6, prerequisitos: ["Enfermería en salud del niño y adolescente"] },
+          { nombre: "Enfermería en emergencias, urgencias y desastres", tipo: "O", creditos: 6, prerequisitos: ["Enfermería en salud mental y psiquiátrica"] },
+          { nombre: "Seminario de investigación II", tipo: "O", creditos: 6, prerequisitos: ["Seminario de investigación I"] },
+          { nombre: "Docencia en Salud", tipo: "E", creditos: 3, prerequisitos: ["acumular mínimo 151 créditos"] },
+          { nombre: "Marketing Empresarial en salud", tipo: "E", creditos: 3, prerequisitos: ["acumular mínimo 151 créditos"] },
+          { nombre: "Inglés VIII", tipo: "O", creditos: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    año: 5,
+    ciclos: [
+      {
+        nombre: "IX semestre",
+        cursos: [
+          { nombre: "Internado I", tipo: "O", creditos: 22, prerequisitos: ["acumular mínimo 173 créditos"] },
+          { nombre: "Inglés IX", tipo: "O", creditos: 1 }
+        ]
+      },
+      {
+        nombre: "X semestre",
+        cursos: [
+          { nombre: "Internado II", tipo: "O", creditos: 22, prerequisitos: ["Internado I"] },
+          { nombre: "Curso de Trabajo de Investigación – Taller de sustentación de tesis", tipo: "O", creditos: 2, prerequisitos: ["Seminario de investigación II"] },
+          { nombre: "Inglés X", tipo: "O", creditos: 1 }
+        ]
+      }
+    ]
+  }
+];
 const estado = {};
 
 function guardarEstado() {
