@@ -70,8 +70,12 @@ const cursos = [{
         { nombre: "Seminario de investigación II", tipo: "O", creditos: 6, requisitos: ["Seminario de investigación I"] },
         { nombre: "Docencia en Salud", tipo: "E", creditos: 3, requisitos: ["acumular mínimo 151 créditos"] },
         { nombre: "Marketing Empresarial en salud", tipo: "E", creditos: 3, requisitos: ["acumular mínimo 151 créditos"] },
-        { nombre: "Inglés VIII", tipo: "O", creditos: 1 }]}]},
-{año: 5,
+               { nombre: "Inglés VIII", tipo: "O", creditos: 1 }]
+    }]
+},
+{
+  año: 5,
+
   ciclos: [{nombre: "IX semestre",
       cursos: [
         { nombre: "Internado I", tipo: "O", creditos: 22, requisitos: ["acumular mínimo 173 créditos"] },
@@ -80,8 +84,17 @@ const cursos = [{
       cursos: [
         { nombre: "Internado II", tipo: "O", creditos: 22, requisitos: ["Internado I"] },
         { nombre: "Curso de Trabajo de Investigación – Taller de sustentación de tesis", tipo: "O", creditos: 2, requisitos: ["Seminario de investigación II"] },
-        { nombre: "Inglés X", tipo: "O", creditos: 1 }]]
-}];
+           {nombre: "X semestre",
+      cursos: [
+        { nombre: "Internado II", tipo: "O", creditos: 22, requisitos: ["Internado I"] },
+        { nombre: "Curso de Trabajo de Investigación – Taller de sustentación de tesis", tipo: "O", creditos: 2, requisitos: ["Seminario de investigación II"] },
+        { nombre: "Inglés X", tipo: "O", creditos: 1 }
+      ]
+    }
+  ]
+}
+];
+
 const estado = {};
 
 function guardarEstado() {
