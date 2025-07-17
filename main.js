@@ -129,7 +129,7 @@ const cursos = [
       }
     ]
   }
-];
+]
 
 const estado = {};
 
