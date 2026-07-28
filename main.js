@@ -77,7 +77,7 @@ const cursos = [
           { nombre: "Enfermería en salud del adulto mayor", tipo: "O", creditos: 7, requisitos: ["Enfermería en salud del adulto"] },
           { nombre: "Seminario de investigación I", tipo: "O", creditos: 4, requisitos: ["Metodología de la investigación"] },
           { nombre: "Enfermería quirúrgica", tipo: "E", creditos: 3, requisitos: ["Enfermería en salud del adulto", "acumular mínimo 108 créditos"] },
-          { nombre: "Tecnología de la información y la comunicación en salud", tipo: "E", creditos: 3, requisitos: ["acumular mínimo 108 créditos"] },
+          { nombre: "Tecnología de la información y la comunicación en salud", tipo: "E", creditos: 3, requisitos: ["acumular mas o igual 108 créditos"] },
           { nombre: "Inglés VI", tipo: "O", creditos: 1 }
         ]
       }
