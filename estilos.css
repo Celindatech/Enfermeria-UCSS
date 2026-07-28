@@ -1,3 +1,4 @@
+CSS
 body {
   font-family: sans-serif;
   background: #fff0f5;
@@ -28,21 +29,43 @@ h1 {
 
 .ciclo h3 {
   color: #b51c6e;
+  margin-top: 5px;
+  margin-bottom: 12px;
 }
 
+/* Cajas de los cursos */
 .curso {
-  padding: 8px;
-  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 6px 0;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: #fff;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.curso strong {
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.curso-creditos {
+  display: block;
+  font-size: 0.8rem;
+  color: #777;
+  font-weight: normal;
+  margin-top: 4px;
 }
 
 .curso:hover {
   transform: scale(1.02);
 }
+
+/* Estados de los cursos */
 .curso.aprobado {
   background-color: #ffd6ea; /* rosa suave */
   border-color: #d63384;
@@ -50,17 +73,36 @@ h1 {
   color: #b51c6e;
 }
 
+.curso.aprobado .curso-creditos {
+  color: #a0155e;
+}
+
 .curso.electivo {
   background-color: #ffe0f0;
   border: 1px solid #ff66b2;
   box-shadow: 0 0 5px #ff99cc;
 }
+
 .curso.electivo.aprobado {
-  background-color: #ffd6ea; /* igual que aprobado normal */
+  background-color: #ffd6ea;
   border-color: #d63384;
   box-shadow: 0 0 5px #e94ca0;
   color: #b51c6e;
 }
+
+.curso.bloqueado {
+  background-color: #f2f2f2;
+  color: #aaa;
+  border-color: #ddd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.curso.bloqueado .curso-creditos {
+  color: #bbb;
+}
+
+/* Mensaje de Egreso */
 #egreso {
   font-size: 24px;
   font-weight: bold;
@@ -79,12 +121,16 @@ h1 {
   0% {
     transform: scale(1);
     opacity: 1;
-    color: #d63384;}
+    color: #d63384;
+  }
   100% {
     transform: scale(1.1);
     opacity: 0.7;
-    color: #ff66b2; }
+    color: #ff66b2;
+  }
 }
+
+/* Barra inferior de resumen */
 .summary-bar {
   background-color: #ffd2d9; /* Tono rosa pastel */
   color: #2c3e50;
@@ -93,4 +139,5 @@ h1 {
   text-align: center;
   padding: 15px;
   border-radius: 10px;
-  margin-top: 20px;}
+  margin-top: 20px;
+}
