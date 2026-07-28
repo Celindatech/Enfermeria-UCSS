@@ -18,7 +18,7 @@ const cursos = [
       {
         nombre: "II semestre",
         cursos: [
-          { nombre: "Teología I", tipo: "O", creditos: 3, requisitos: ["Antropología religiosa"] },
+          { nombre: "Teología I", tipo: "O", creditos: 4, requisitos: ["Antropología religiosa"] },
           { nombre: "Psicología en la atención de Enfermería", tipo: "O", creditos: 2, requisitos: ["Introducción a la enfermería"] },
           { nombre: "Redacción académica", tipo: "O", creditos: 5, requisitos: ["Lengua: Comunicación escrita académica"] },
           { nombre: "Microbiología y parasitología", tipo: "O", creditos: 3, requisitos: ["Biología"] },
