@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -8,27 +7,26 @@
 </head>
 <body>
   <h1>Enfermería - UCSS</h1>
+
+  <!-- Contenedor del mensaje de egreso -->
   <div id="egreso"></div>
+
+  <!-- Botón de reinicio -->
   <button id="reiniciar" class="boton-reiniciar">🔄 Reiniciar malla</button>
+
+  <!-- Contenedor donde JS dibujará toda la malla curricular -->
   <div id="malla" class="contenedor-malla"></div>
 
-  <!-- 💥 Aquí se carga la librería de confetti -->
+  <!-- Barra inferior de resumen con contadores dinámicos -->
+  <div class="summary-bar">
+    Créditos: <span id="creditos-acumulados">0</span>/226 | 
+    Electivos aprobados: <span id="electivos-acumulados">0</span>/2
+  </div>
+
+  <!-- Librería de confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- Y después tu JS -->
+  <!-- Script principal -->
   <script src="main.js"></script>
 </body>
 </html>
-<div class="summary-bar">
-  Créditos: <span id="creditos-acumulados">0</span>/226 | 
-  Electivos aprobados: <span id="electivos-acumulados">0</span>/2
-</div>
-<!-- Ejemplo de curso obligatorio -->
-<div class="curso" data-creditos="3" data-electivo="false">
-  INTRODUCCION A LA ENFERMERIA
-</div>
-
-<!-- Ejemplo de curso electivo -->
-<div class="curso" data-creditos="2" data-electivo="true">
-  ENFERMERIA QUIRURGICA
-</div>
