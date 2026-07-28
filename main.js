@@ -129,7 +129,7 @@ const cursos = [
       }
     ]
   }
-]
+];
 
 const estado = {};
 
@@ -141,13 +141,13 @@ function cargarEstado() {
   const datos = localStorage.getItem('estadoCursos');
   if (datos) Object.assign(estado, JSON.parse(datos));
 }
+
 function verificarRequisitoEspecial(req) {
   const creditos = contarCreditosAprobados();
   const electivos = contarElectivosAprobados();
 
   let cumple = true;
 
-  // Buscar todas las coincidencias posibles
   const matchesCreditos = req.match(/mínimo (\d+) créditos/);
   const matchesElectivos = req.match(/(\d+) electivos/);
 
@@ -168,13 +168,9 @@ function requisitosCumplidos(curso) {
   if (curso.requisitos) {
     for (const req of curso.requisitos) {
       if (typeof req === 'string') {
-        // Verifica si es un requisito especial
-        if (
-          req.includes('crédito') || req.includes('electivo')
-        ) {
+        if (req.includes('crédito') || req.includes('electivo')) {
           if (!verificarRequisitoEspecial(req)) return false;
         } else {
-          // Requisito es el nombre de otro curso
           if (!estado[req]) return false;
         }
       }
@@ -182,7 +178,6 @@ function requisitosCumplidos(curso) {
   }
   return true;
 }
-
 
 function todosLosCursos() {
   return cursos.flatMap(a => a.ciclos.flatMap(c => c.cursos));
@@ -201,7 +196,11 @@ function crearCajaCurso(curso) {
   div.className = 'curso';
   if (curso.tipo === 'E') div.classList.add('electivo');
 
-  div.innerHTML = `<strong>${curso.nombre}</strong>`;
+  // Muestra nombre + cantidad de créditos abajo
+  div.innerHTML = `
+    <strong>${curso.nombre}</strong>
+    <span class="curso-creditos">${curso.creditos} crédito${curso.creditos > 1 ? 's' : ''}</span>
+  `;
 
   if (estado[curso.nombre]) {
     div.classList.add('aprobado');
@@ -255,28 +254,41 @@ function renderizarCursos() {
 
   const creditos = contarCreditosAprobados();
   const electivos = contarElectivosAprobados();
-  const egreso = document.getElementById('egreso');
-  const yaEgresaste = egreso.classList.contains('animado');
 
-  if (creditos >= 221 && electivos >= 2) {
-    egreso.textContent = '🎓 ¡Puedes egresar!';
-    if (!yaEgresaste) {
-      egreso.classList.add('animado');
-      lanzarConfeti();
+  // Actualiza los textos de la barra de resumen
+  const elCreditos = document.getElementById('creditos-acumulados');
+  const elElectivos = document.getElementById('electivos-acumulados');
+  if (elCreditos) elCreditos.textContent = creditos;
+  if (elElectivos) elElectivos.textContent = electivos;
+
+  const egreso = document.getElementById('egreso');
+  if (egreso) {
+    const yaEgresaste = egreso.classList.contains('animado');
+
+    if (creditos >= 221 && electivos >= 2) {
+      egreso.textContent = '🎓 ¡Puedes egresar!';
+      if (!yaEgresaste) {
+        egreso.classList.add('animado');
+        lanzarConfeti();
+      }
+    } else {
+      egreso.textContent = '';
+      egreso.classList.remove('animado');
     }
-  } else {
-    egreso.textContent = '';
-    egreso.classList.remove('animado');
   }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
   cargarEstado();
   renderizarCursos();
-  document.getElementById('reiniciar').addEventListener('click', () => {
-    if (confirm('¿Deseas reiniciar la malla? Se borrará tu progreso.')) {
-      localStorage.removeItem('estadoCursos');
-      location.reload();
-    }
-  });
+  
+  const btnReiniciar = document.getElementById('reiniciar');
+  if (btnReiniciar) {
+    btnReiniciar.addEventListener('click', () => {
+      if (confirm('¿Deseas reiniciar la malla? Se borrará tu progreso.')) {
+        localStorage.removeItem('estadoCursos');
+        location.reload();
+      }
+    });
+  }
 });
